@@ -7,9 +7,9 @@ module Dodona
 
     # Default values for the CLI
     DEFAULTS = {
-      host: 'http://localhost:3000',
-      token: ''
-    }
+      'host' => 'http://localhost:3000',
+      'token' => ''
+    }.freeze
 
     # Creates a new config object, based on a given YAML file. If no filename
     # given, '.dodonarc' in the home dir of the user will be used.
@@ -19,7 +19,7 @@ module Dodona
     # @param [String] file An optional file name of the YAML file to create the
     # config from
     def initialize(file = nil)
-      @file_name = file ? file : File.join(Dir.home, '.dodonarc')
+      @file_name = file ? file : File.join(Dir.home, '.dodona.yml')
       @config = if !File.exist? file_name
                   {}
                 else
@@ -36,17 +36,17 @@ module Dodona
 
     # Deletes a key
     def delete(key)
-      config.delete(key)
+      @config.delete(key)
     end
 
     # forwards [] to the internal config hash
     def [](*args)
-      config.[](*args)
+      @config.[](*args)
     end
 
     # forwards =[] to the internal config hash
     def []=(*args)
-      config.[]=(*args)
+      @config.[]=(*args)
     end
   end
 end
