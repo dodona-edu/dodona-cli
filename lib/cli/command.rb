@@ -2,27 +2,31 @@ require 'rubygems'
 require 'bundler/setup'
 require 'cri'
 require 'byebug'
-require_relative './config.rb'
+
+require_relative './subcommand'
+require_relative './config'
+require_relative './command'
+require_relative './courses'
+require_relative './status'
+require_relative './exercises'
 
 module Dodona::CLI
   class Command
     def initialize
       @cmd = create_root_cmd
-      add_status
-      Config.new(@cmd)
+      Config.subcommand_of(@cmd)
+      Courses.subcommand_of(@cmd)
+      Status.subcommand_of(@cmd)
+      Exercises.subcommand_of(@cmd)
     end
 
     def run(args)
       @cmd.run(args)
     end
 
-    def add_status; end
-
-    def add_config
-    end
-
     def create_root_cmd
       Cri::Command.new_basic_root.modify do
+        name 'dodona'
         usage 'dodona command [options]'
         description <<-EOS
           The dodona command line interface makes your life easier by allowing

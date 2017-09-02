@@ -8,7 +8,8 @@ module Dodona
     # Default values for the CLI
     DEFAULTS = {
       'host' => 'http://localhost:3000',
-      'token' => ''
+      'token' => '',
+      'exercise_directory' => '~/dodona'
     }.freeze
 
     # Creates a new config object, based on a given YAML file. If no filename
@@ -34,18 +35,20 @@ module Dodona
       File.open(file_name, 'w') { |f| f.write config.to_yaml }
     end
 
-    # Deletes a key
+    # Deletes a key (reset to default)
     def delete(key)
-      @config.delete(key)
+      @config.delete(key.to_s)
     end
 
     # forwards [] to the internal config hash
     def [](*args)
+      args.map!(&:to_s)
       @config.[](*args)
     end
 
     # forwards =[] to the internal config hash
     def []=(*args)
+      args.map!(&:to_s)
       @config.[]=(*args)
     end
   end

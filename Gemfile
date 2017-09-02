@@ -15,4 +15,4 @@ group :development do
 end
 
 gem 'cri', '~> 2.9.1'
-gem 'httparty', '~> 0.15.6'
+gem 'spyke', '~> 5.0.0'
