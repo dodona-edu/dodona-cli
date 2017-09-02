@@ -6,10 +6,10 @@ module Dodona::CLI
     def run
       argument_count_max! 0
 
-      exercises = Dodona::API::Exercise.all.get
+      exercises = Exercise.all.get
 
       exercises.each do |e|
-        puts e.name
+        puts "#{e.id} -> #{e.name}"
       end
     end
 

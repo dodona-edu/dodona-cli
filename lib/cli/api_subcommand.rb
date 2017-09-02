@@ -2,13 +2,15 @@ require_relative '../api'
 
 module Dodona::CLI
   class APISubcommand < Subcommand
+    include Dodona::API
+
     def initialize(*args)
       super(*args)
       Dodona::API.connect(config[:host], config[:token])
     end
 
     def base
-      @base ||= Dodona::API::Base.all.get
+      @base ||= Base.all.get
     end
 
     def current_user

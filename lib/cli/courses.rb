@@ -7,7 +7,7 @@ module Dodona::CLI
       argument_count_max! 0
       courses =
         if options[:all]
-          Dodona::API::Course.all.get
+          Course.all.get
         else
           current_user.courses.get
         end

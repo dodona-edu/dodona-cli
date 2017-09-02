@@ -4,5 +4,6 @@ module Dodona::API
                :email, :permission, :time_tone, :lang
 
     has_many :courses
+    has_many :submissions
   end
 end

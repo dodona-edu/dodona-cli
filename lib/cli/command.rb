@@ -9,15 +9,17 @@ require_relative './command'
 require_relative './courses'
 require_relative './status'
 require_relative './exercises'
+require_relative './submissions'
+require_relative './last'
+require_relative './submit'
 
 module Dodona::CLI
   class Command
     def initialize
       @cmd = create_root_cmd
-      Config.subcommand_of(@cmd)
-      Courses.subcommand_of(@cmd)
-      Status.subcommand_of(@cmd)
-      Exercises.subcommand_of(@cmd)
+      subcommands = [Config, Courses, Status, Exercises, Submissions, Last,
+                     Submit]
+      subcommands.each { |s| s.subcommand_of(@cmd) }
     end
 
     def run(args)

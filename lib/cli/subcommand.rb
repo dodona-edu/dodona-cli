@@ -20,6 +20,10 @@ module Dodona::CLI
       abort @command.help unless @arguments.count.between? min, max
     end
 
+    def argument_count_exact!(count)
+      abort @command.help unless @arguments.count == count
+    end
+
     def self.subcommand_of(_cmd)
       raise NotImplementedError, 'Subclasses must implement self#subcommand_of'
     end
