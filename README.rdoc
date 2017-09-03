@@ -1,6 +1,8 @@
-= dodona-cli
+= Dodona CLI
 
-Description goes here.
+Commandline interface for Dodona.
+
+[![asciicast](https://asciinema.org/a/uSQMrPzjFCQoxEtin293C7DZ9.png)](https://asciinema.org/a/uSQMrPzjFCQoxEtin293C7DZ9)
 
 == Contributing to dodona-cli
  
