@@ -87,7 +87,7 @@ There could be a special folder called `Exercises` where a user could make his e
 ### Commands
 
 | subcommand | function                                     |
-+ ---------- + -------------------------------------------- +
+| ---------- | -------------------------------------------- |
 | refresh    | refreshes the current state (download new)   |
 | continue   | continues working on where the user left     |
 | next       | go to the next exercise                      |
