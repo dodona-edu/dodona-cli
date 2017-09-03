@@ -14,7 +14,7 @@ module Dodona::CLI
       submissions = Submission.all.get
 
       if options[:last]
-        last = submissions.last
+        last = submissions.first
         submissions = [last]
       end
 
