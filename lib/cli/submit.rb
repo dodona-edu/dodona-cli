@@ -1,23 +1,28 @@
 require_relative './api_subcommand'
+require_relative '../core/submitter'
 
 module Dodona::CLI
   class Submit < APISubcommand
-    def run
+    include Dodona::Core
+
+    def fetch_code
       code =
         if arguments.count.zero? && options[:code]
           options[:code]
         elsif arguments.count == 1 && options[:code].nil?
-          File.read(arguments.first).strip
+          File.read(arguments.first)
         else
           abort @cmd.help
         end
-
-      submission = Submission.create code: code.strip,
-                                     exercise_id: options[:exercise],
-                                     course_id: options[:course]
-      p submission.reload
+      code.strip
     rescue Errno::ENOENT
       abort 'File does not exist or is not readable.'
+    end
+
+    def run
+      Dodona::Core::Submitter.new.submit_with_progress fetch_code,
+                                                       exercise: options[:exercise],
+                                                       course: options[:course]
     end
 
     def self.subcommand_of(cmd)
