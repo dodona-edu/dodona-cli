@@ -1,6 +1,6 @@
 # Dodona CLI
 
-Commandline interface for Dodona.
+Command line interface for Dodona.
 
 [![asciicast](https://asciinema.org/a/uSQMrPzjFCQoxEtin293C7DZ9.png)](https://asciinema.org/a/uSQMrPzjFCQoxEtin293C7DZ9)
 
