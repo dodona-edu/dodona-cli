@@ -56,6 +56,7 @@ The configuration file is a yml-file (`$HOME/.dodona.yml` by default) which shou
 - host (https://dodona.ugent.be)
 - token (special API token for the user)
 - dodona_dir (`$HOME/Dodona`)
+- natural language
 - ...
 
 #### State
