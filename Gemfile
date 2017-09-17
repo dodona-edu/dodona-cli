@@ -14,6 +14,9 @@ group :development do
   gem "simplecov", ">= 0"
 end
 
+# Utility classes and Ruby extensions
+gem 'core_ext'
+
 # Commandline Interface builder
 gem 'cri', '~> 2.9.1'
 

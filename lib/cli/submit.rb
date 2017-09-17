@@ -1,10 +1,9 @@
 require_relative './api_subcommand'
-require_relative '../core/submitter'
+
+require 'tty/spinner'
 
 module Dodona::CLI
   class Submit < APISubcommand
-    include Dodona::Core
-
     def fetch_code
       code =
         if arguments.count.zero? && options[:code]
@@ -12,7 +11,7 @@ module Dodona::CLI
         elsif arguments.count == 1 && options[:code].nil?
           File.read(arguments.first)
         else
-          abort @cmd.help
+          abort @command.help
         end
       code.strip
     rescue Errno::ENOENT
@@ -20,9 +19,26 @@ module Dodona::CLI
     end
 
     def run
-      Dodona::Core::Submitter.new.submit_with_progress fetch_code,
-                                                       exercise: options[:exercise],
-                                                       course: options[:course]
+      params = {
+        code: fetch_code,
+        exercise_id: options[:exercise],
+        course_id: options[:course]
+      }
+
+      spinner = TTY::Spinner.new('[:spinner] :status', hide_cursor: true)
+      spinner.update(status: 'sending submission')
+      spinner.auto_spin
+
+      submission = Submission.submit(params) do |sub|
+        spinner.update(status: sub.status)
+      end
+
+      if submission.accepted
+        spinner.success "(#{submission.summary})"
+      else
+        spinner.error "(#{submission.summary})"
+      end
+      puts submission
     end
 
     def self.subcommand_of(cmd)
@@ -31,7 +47,7 @@ module Dodona::CLI
         usage 'submit [FILE]'
         summary 'create a new submission'
         description <<-EOS
-          Submit a solution to dodona. You must either give a FILE as argument, or the code itself with the --code option.
+          Submit a solution to dodona. You must either give a FILE as argument or the code itself with the --code option.
         EOS
 
         required :e, :exercise,

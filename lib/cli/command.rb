@@ -12,13 +12,14 @@ require_relative './exercises'
 require_relative './submissions'
 require_relative './last'
 require_relative './submit'
+require_relative './list'
 
 module Dodona::CLI
   class Command
     def initialize
       @cmd = create_root_cmd
       subcommands = [Config, Courses, Status, Exercises, Submissions, Last,
-                     Submit]
+                     Submit, List]
       subcommands.each { |s| s.subcommand_of(@cmd) }
     end
 
@@ -35,8 +36,7 @@ module Dodona::CLI
           you to submit your solutions from the command line.
         EOS
 
-        flag :v, :version,  'display the current version'
-        flag :q, :quiet,    "append '> /dev/null'"
+        flag :v, :version, 'display the current version'
 
         option nil, :config, 'specify a custom config file', argument: :required
 

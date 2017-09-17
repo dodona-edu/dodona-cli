@@ -12,7 +12,7 @@ module Dodona::API
     end
   end
 
-  def self.current_user
+  def current_user
     Base.current_user
   end
 

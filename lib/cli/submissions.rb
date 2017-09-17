@@ -1,9 +1,6 @@
 require_relative '../api/submission'
 require_relative './api_subcommand.rb'
 
-require 'action_view/helpers'
-require 'dotiw'
-
 module Dodona::CLI
   class Submissions < APISubcommand
     include ActionView::Helpers::DateHelper
