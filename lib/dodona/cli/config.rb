@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Dodona::CLI
   class Config < Subcommand
     def run

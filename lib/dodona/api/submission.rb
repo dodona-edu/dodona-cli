@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Dodona::API
   class Submission < Spyke::Base
     include ActionView::Helpers::DateHelper

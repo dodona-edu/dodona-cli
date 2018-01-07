@@ -1,7 +1,15 @@
+# frozen_string_literal: true
+
 module Dodona::CLI
   class Subcommand < Cri::CommandRunner
+    def state
+      state = Dodona::State.instance
+      state.configure options unless state.configured?
+      state
+    end
+
     def config
-      @config ||= Dodona::Configuration.new options[:config]
+      state.config
     end
 
     def argument_count_max!(max)

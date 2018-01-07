@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Dodona::API
   class Base < Spyke::Base
     uri '/'

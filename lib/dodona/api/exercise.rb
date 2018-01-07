@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Dodona::API
   class Exercise < Spyke::Base
     attributes :name, :boilerplate, :description_format, :file_name,

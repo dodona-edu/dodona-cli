@@ -1,7 +1,7 @@
-require 'yaml'
-
+# frozen_string_literal: true
 module Dodona
   class Configuration
+
     attr_reader :config
     attr_reader :file_name
 

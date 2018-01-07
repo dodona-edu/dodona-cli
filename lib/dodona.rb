@@ -6,6 +6,9 @@ require 'byebug'
 
 Bundler.require(:default)
 
+require 'yaml'
+require 'json'
+
 module Dodona
 end
 

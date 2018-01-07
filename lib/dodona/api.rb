@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Dodona
   module Api
@@ -7,9 +8,10 @@ end
 require 'spyke'
 require 'action_view/helpers'
 require 'dotiw'
+require 'pastel'
+require 'json'
 
-require_relative 'json_parser'
-
+require_relative 'api/json_parser'
 require_relative 'api/base'
 require_relative 'api/course'
 require_relative 'api/exercise'

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Dodona
   module Version
     MAJOR = 0
