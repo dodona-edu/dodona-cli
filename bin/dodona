@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
-require_relative '../lib/cli/command'
 
-Dodona::CLI::Command.run(ARGV)
+$LOAD_PATH.unshift("#{__dir__}/../lib")
+
+require 'dodona'
+require 'dodona/cli'
+
+Dodona::CLI.run(ARGV)

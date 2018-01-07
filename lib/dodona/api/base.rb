@@ -1,5 +1,3 @@
-require_relative './user.rb'
-
 module Dodona::API
   class Base < Spyke::Base
     uri '/'

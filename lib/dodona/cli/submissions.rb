@@ -1,6 +1,3 @@
-require_relative '../api/submission'
-require_relative './api_subcommand.rb'
-
 module Dodona::CLI
   class Submissions < APISubcommand
     include ActionView::Helpers::DateHelper

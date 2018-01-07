@@ -1,7 +1,3 @@
-require_relative './api_subcommand'
-
-require 'tty/spinner'
-
 module Dodona::CLI
   class Submit < APISubcommand
     def fetch_code

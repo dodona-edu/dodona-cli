@@ -1,5 +1,3 @@
-require_relative './api_subcommand.rb'
-
 module Dodona::CLI
   class List < APISubcommand
     TYPES = {

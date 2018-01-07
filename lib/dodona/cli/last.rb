@@ -1,8 +1,9 @@
-require_relative './api_subcommand'
-require_relative './submissions'
-
 module Dodona::CLI
   class Last < APISubcommand
+    def run()
+      puts "Hello"
+    end
+
     def self.subcommand_of(cmd)
       cmd.define_command('last') do
         name 'last'

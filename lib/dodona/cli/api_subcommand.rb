@@ -1,5 +1,3 @@
-require_relative '../api'
-
 module Dodona::CLI
   class APISubcommand < Subcommand
     include Dodona::API

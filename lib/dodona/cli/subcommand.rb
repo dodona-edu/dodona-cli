@@ -1,7 +1,3 @@
-require 'cri'
-
-require_relative '../configuration.rb'
-
 module Dodona::CLI
   class Subcommand < Cri::CommandRunner
     def config

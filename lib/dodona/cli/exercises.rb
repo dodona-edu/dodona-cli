@@ -1,6 +1,3 @@
-require_relative '../api/exercise'
-require_relative './api_subcommand.rb'
-
 module Dodona::CLI
   class Exercises < APISubcommand
     def run

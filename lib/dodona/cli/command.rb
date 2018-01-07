@@ -1,19 +1,3 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'cri'
-require 'byebug'
-
-require_relative './subcommand'
-require_relative './config'
-require_relative './command'
-require_relative './courses'
-require_relative './status'
-require_relative './exercises'
-require_relative './submissions'
-require_relative './last'
-require_relative './submit'
-require_relative './list'
-
 module Dodona::CLI
   class Command
     def initialize
@@ -48,10 +32,6 @@ module Dodona::CLI
           end
         end
       end
-    end
-
-    def self.run(args)
-      new.run(args)
     end
   end
 end

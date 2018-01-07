@@ -1,6 +1,3 @@
-require 'action_view/helpers'
-require 'dotiw'
-
 module Dodona::API
   class Submission < Spyke::Base
     include ActionView::Helpers::DateHelper
