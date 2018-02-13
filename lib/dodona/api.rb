@@ -34,8 +34,9 @@ module Dodona
       Base.current_user
     end
 
-    def self.motd
-      Base.motd
+    def application_version
+      Base.version
     end
+
   end
 end

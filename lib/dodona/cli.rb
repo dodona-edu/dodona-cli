@@ -21,7 +21,6 @@ require_relative 'cli/status'
 require_relative 'cli/submissions'
 require_relative 'cli/submit'
 
-
 module Dodona::CLI
   def self.run(args)
     Dodona::CLI::Command.new.run(args)

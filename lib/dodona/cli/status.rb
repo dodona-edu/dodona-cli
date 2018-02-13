@@ -1,11 +1,23 @@
 # frozen_string_literal: true
+
 module Dodona::CLI
   class Status < APISubcommand
     def run
       argument_count_max! 0
+      check_client_supported!
 
-      puts "Message of the day: #{motd}\n"
+      puts "Dodona #{application_version}"
       puts "You are #{current_user.first_name} #{current_user.last_name}"
+      puts deadline_string
+      puts "Submissions: #{current_user.submission_count}"
+      puts "Solved exercises: #{current_user.correct_exercises}"
+    end
+
+    def deadline_string
+      c = deadlines.count
+      num = c.zero? ? 'No' : c
+      pluralized = c == 1 ? 'deadline' : 'deadlines'
+      "#{num} upcoming #{pluralized}"
     end
 
     def self.subcommand_of(cmd)
@@ -13,9 +25,9 @@ module Dodona::CLI
         name 'status'
         summary 'show the current status'
         usage 'status'
-        description <<-EOS
+        description <<-HERE
           Shows the message of the day and as who you are logged in.
-        EOS
+        HERE
 
         runner Status
       end
