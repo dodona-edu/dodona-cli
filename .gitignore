@@ -1,4 +1,5 @@
 .byebug_history
+*.gem
 
 # rcov generated
 coverage
