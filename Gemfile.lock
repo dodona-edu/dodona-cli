@@ -65,6 +65,7 @@ GEM
       oauth2 (~> 1.0)
     hashie (3.5.6)
     highline (1.7.8)
+    homecoming (0.1.1)
     i18n (0.8.6)
     jeweler (2.0.1)
       builder
@@ -186,10 +187,11 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.0)
   byebug
-  core_ext
+  core_ext (~> 0.0.6)
   cri (~> 2.9.1)
   dodona-cli!
   dotiw (~> 4.0.0)
+  homecoming (~> 0.1.1)
   jeweler (~> 2.0.1)
   minitest
   rdoc (~> 3.12)

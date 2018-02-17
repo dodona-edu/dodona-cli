@@ -11,6 +11,9 @@ module Dodona::CLI
       puts deadline_string
       puts "Submissions: #{current_user.submission_count}"
       puts "Solved exercises: #{current_user.correct_exercises}"
+      puts "Current course: #{state.current_course}"
+      puts "Current series: #{state.current_series}"
+      puts "Current exercise: #{state.current_exercise}"
     end
 
     def deadline_string

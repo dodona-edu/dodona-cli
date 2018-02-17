@@ -6,7 +6,7 @@ module Dodona::CLI
 
     def initialize(*args)
       super(*args)
-      Dodona::API.connect(config[:host], config[:token])
+      state.connect
     end
 
     def base

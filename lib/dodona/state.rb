@@ -14,7 +14,8 @@ module Dodona
     }.freeze
 
     def initialize
-      @pwd = Dir.pwd
+      @pwd = Pathname.new Dir.pwd
+      @pastel = Pastel.new
     end
 
     def verbose?
@@ -31,9 +32,12 @@ module Dodona
     end
 
     def configure(options)
-      raise 'Already configured!' if configured?
+      raise 'Already configured' if configured?
       @options = DEFAULTS.merge(options)
       @config = Dodona::Configuration.new @options[:config]
+      @exercise_dir = Pathname.new(@config[:exercise_directory]).expand_path.realdirpath
+      @dirs_until_exercise_dir = dirs_until_exercise_dir
+      @connected = false
     end
 
     def config
@@ -41,12 +45,54 @@ module Dodona
       @config
     end
 
-    def current_course
-      if @pwd.starts_with? config[:exercise_directory]
+    def connect
+      raise 'Already connected' if @connected
+      host = config[:host]
+      token = config[:token]
+      puts @pastel.yellow('No authentication token set up.') if token.blank?
+      Spyke::Base.connection = Faraday.new(url: host) do |c|
+        c.token_auth token
+        c.request :json
+        c.headers['Accept'] = 'application/json'
+        c.use JSONParser
+        c.adapter Faraday.default_adapter
       end
+      @connected = true
+    end
+
+    def in_exercise_dir?
+      @dirs_until_exercise_dir.any?
+    end
+
+    def current_course
+      return nil unless in_exercise_dir?
+      @dirs_until_exercise_dir.first
+    end
+
+    def current_series
+      return nil unless @dirs_until_exercise_dir.size >= 2
+      @dirs_until_exercise_dir[1]
     end
 
     def current_exercise
+      return nil unless @dirs_until_exercise_dir.size >= 3
+      @dirs_until_exercise_dir[2]
+    end
+
+    private
+
+    # Returns a list of all the directories from the current directory
+    # until the exercise directory (inclusive).
+    # The list is empty if not in the exercise directory.
+    def dirs_until_exercise_dir
+      dir = @pwd
+      children = [dir]
+      loop do
+        return [] if dir.root?
+        return children if dir == @exercise_dir
+        children.unshift dir
+        dir = dir.parent
+      end
     end
   end
 end

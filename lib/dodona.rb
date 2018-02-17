@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 require 'rubygems'
-require 'bundler/setup'
 require 'byebug'
-
-Bundler.require(:default)
-
+require 'spyke'
 require 'yaml'
 require 'json'
+require 'pathname'
 
 module Dodona
 end
 
 # Load Dodona
 require 'dodona/configuration'
+require 'dodona/json_parser'
 require 'dodona/state'
 require 'dodona/version'
 require 'dodona/core'
