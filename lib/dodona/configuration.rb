@@ -7,7 +7,7 @@ module Dodona
 
     # Default values for the CLI
     DEFAULTS = {
-      'host' => 'http://localhost:3000',
+      'host' => 'https://dodona.ugent.be',
       'token' => '',
       'exercise_directory' => '~/dodona'
     }.freeze

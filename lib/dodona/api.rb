@@ -21,6 +21,10 @@ require_relative 'api/user'
 module Dodona
   module API
     def self.connect(host, token)
+      if token.blank?
+        p = Pastel.new
+        puts p.yellow('No authentication token set up.')
+      end
       Spyke::Base.connection = Faraday.new(url: host) do |c|
         c.token_auth token
         c.request :json
