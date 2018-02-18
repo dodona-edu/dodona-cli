@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Dodona::CLI
   class Courses < APISubcommand
     def run
@@ -7,7 +8,7 @@ module Dodona::CLI
         if options[:all]
           Course.all.get
         else
-          current_user.courses.get
+          current_user.courses
         end
       courses.each do |c|
         puts c.name
@@ -19,9 +20,9 @@ module Dodona::CLI
         name    'courses'
         summary 'list courses'
         usage   'courses [subcommand]'
-        description <<-EOS
+        description <<-DESC
           Lists your current courses, or all available courses if the `--all` flag is given.
-        EOS
+        DESC
 
         flag :a, :all, 'lists all courses'
 

@@ -6,7 +6,7 @@ module Dodona::API
 
     has_one :user
 
-    has_many :dealine_series, class_name: 'Series'
+    has_many :deadline_series, class_name: 'Dodona::API::Series'
 
     attributes :version, :min_supported_client
 
