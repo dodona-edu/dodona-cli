@@ -11,8 +11,8 @@ module Dodona::CLI
       argument_count_exact! 1
       @type = arguments.first.to_sym
       @model = TYPES[@type]
-      abort "Unrecognised type: #{type}" unless @model
-      puts query.get.join("\n")
+      abort "Unrecognised type: #{@type}" if @model.nil?
+      puts query.to_a.join("\n")
     end
 
     def query
