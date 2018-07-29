@@ -4,7 +4,7 @@ module Dodona::CLI
     def initialize
       @cmd = create_root_cmd
       subcommands = [Config, Courses, Status, Exercises, Submissions, Last,
-                     Submit, List, Debug]
+                     Submit, List, Debug, Next]
       subcommands.each { |s| s.subcommand_of(@cmd) }
     end
 

@@ -35,8 +35,8 @@ module Dodona
       raise 'Already configured' if configured?
       @options = DEFAULTS.merge(options)
       @config = Dodona::Configuration.new @options[:config]
-      @exercise_dir = Pathname.new(@config[:exercise_directory]).expand_path.realdirpath
-      @dirs_until_exercise_dir = dirs_until_exercise_dir
+      @dodona_dir = Pathname.new(@config[:exercise_directory]).expand_path.realdirpath
+      @dirs_until_dodona_dir = dirs_until_dodona_dir
       @connected = false
     end
 
@@ -60,23 +60,23 @@ module Dodona
       @connected = true
     end
 
-    def in_exercise_dir?
-      @dirs_until_exercise_dir.any?
+    def in_dodona_dir?
+      @dirs_until_dodona_dir.any?
     end
 
     def current_course
-      return nil unless in_exercise_dir?
-      @dirs_until_exercise_dir.first
+      return nil unless in_dodona_dir?
+      @dirs_until_dodona_dir.first
     end
 
     def current_series
-      return nil unless @dirs_until_exercise_dir.size >= 2
-      @dirs_until_exercise_dir[1]
+      return nil unless @dirs_until_dodona_dir.size >= 2
+      @dirs_until_dodona_dir[1]
     end
 
     def current_exercise
-      return nil unless @dirs_until_exercise_dir.size >= 3
-      @dirs_until_exercise_dir[2]
+      return nil unless @dirs_until_dodona_dir.size >= 3
+      @dirs_until_dodona_dir[2]
     end
 
     private
@@ -84,12 +84,12 @@ module Dodona
     # Returns a list of all the directories from the current directory
     # until the exercise directory (inclusive).
     # The list is empty if not in the exercise directory.
-    def dirs_until_exercise_dir
+    def dirs_until_dodona_dir
       dir = @pwd
       children = [dir]
       loop do
         return [] if dir.root?
-        return children if dir == @exercise_dir
+        return children if dir == @dodona_dir
         children.unshift dir
         dir = dir.parent
       end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Dodona
-  module Api
+  module API
   end
 end
 
@@ -9,6 +9,8 @@ require 'action_view/helpers'
 require 'dotiw'
 require 'pastel'
 require 'json'
+
+require_relative 'api/mixins/pathable'
 
 require_relative 'api/base'
 require_relative 'api/course'

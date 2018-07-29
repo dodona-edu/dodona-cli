@@ -21,6 +21,7 @@ require_relative 'cli/list'
 require_relative 'cli/status'
 require_relative 'cli/submissions'
 require_relative 'cli/submit'
+require_relative 'cli/next'
 
 module Dodona::CLI
   def self.run(args)

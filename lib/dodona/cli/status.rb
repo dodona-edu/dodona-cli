@@ -19,7 +19,7 @@ module Dodona::CLI
     def deadline_string
       c = deadlines.count
       num = c.zero? ? 'No' : c
-      pluralized = c == 1 ? 'deadline' : 'deadlines'
+      pluralized = (c == 1) ? 'deadline' : 'deadlines'
       "#{num} upcoming #{pluralized}"
     end
 
