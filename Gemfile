@@ -23,7 +23,7 @@ gem 'core_ext', '~> 0.0.6'
 gem 'cri', '~> 2.9.1'
 
 # Interact with an API in an ActiveRecord-like manner
-gem 'spyke', '~> 5.0.0'
+gem 'spyke', '~> 5.3.4'
 
 # I like the 'time_ago_in_words' helper
 gem 'dotiw', '~> 4.0.0'
