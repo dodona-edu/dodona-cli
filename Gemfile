@@ -7,7 +7,7 @@ gemspec
 group :development do
   gem 'bundler', '~> 1.0'
   gem 'byebug'
-  gem 'jeweler', '~> 2.0.1'
+  gem 'jeweler', '~> 2.3.9'
   gem 'minitest', '>= 0'
   gem 'rdoc', '~> 3.12'
   gem 'simplecov', '>= 0'
