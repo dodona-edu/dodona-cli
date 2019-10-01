@@ -29,4 +29,4 @@ gem 'spyke', '~> 5.0.0'
 gem 'dotiw', '~> 4.0.0'
 
 # Terminal app toolkit
-gem 'tty', '~> 0.7.0'
+gem 'tty', '~> 0.10.0'
