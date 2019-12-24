@@ -9,7 +9,7 @@ group :development do
   gem 'byebug'
   gem 'jeweler', '~> 2.0.1'
   gem 'minitest', '>= 0'
-  gem 'rdoc', '~> 3.12'
+  gem 'rdoc', '~> 6.2'
   gem 'simplecov', '>= 0'
 end
 
