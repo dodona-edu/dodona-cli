@@ -20,7 +20,7 @@ gem 'homecoming', '~> 0.1.1'
 gem 'core_ext', '~> 0.0.6'
 
 # Commandline Interface builder
-gem 'cri', '~> 2.9.1'
+gem 'cri', '~> 2.15.10'
 
 # Interact with an API in an ActiveRecord-like manner
 gem 'spyke', '~> 5.0.0'
