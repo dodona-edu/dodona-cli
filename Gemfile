@@ -26,7 +26,7 @@ gem 'cri', '~> 2.9.1'
 gem 'spyke', '~> 5.0.0'
 
 # I like the 'time_ago_in_words' helper
-gem 'dotiw', '~> 4.0.0'
+gem 'dotiw', '~> 5.1.0'
 
 # Terminal app toolkit
 gem 'tty', '~> 0.7.0'
